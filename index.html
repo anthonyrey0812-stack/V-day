@@ -14,6 +14,7 @@ body {
     text-align: center;
     font-family: Arial Black, sans-serif;
     color: white;
+    overflow: hidden;
 }
 
 .container {
@@ -26,20 +27,34 @@ body {
     color: gold;
 }
 
-button {
+.buttons {
     margin-top: 30px;
+    position: relative;
+}
+
+button {
     padding: 15px 30px;
     font-size: 20px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    background: hotpink;
-    color: white;
+    margin: 10px;
     transition: 0.3s;
 }
 
-button:hover {
+.yes-btn {
+    background: hotpink;
+    color: white;
+}
+
+.yes-btn:hover {
     transform: scale(1.1);
+}
+
+.no-btn {
+    background: gray;
+    color: white;
+    position: absolute;
 }
 </style>
 </head>
@@ -48,12 +63,40 @@ button:hover {
 <div class="container">
     <h1>YOU'RE THE <span class="gold">DROID</span><br>
     I'VE BEEN LOOKING FOR!</h1>
-    <h2>FROM ANTHONY</h2>
+    <h2>FROM ANTHONY 💫</h2>
 
-    <button onclick="window.location.href='yes.html'">
-        💖 Will You Be My Valentine?
-    </button>
+    <div class="buttons">
+        <button class="yes-btn" onclick="window.location.href='yes.html'">
+    💖 Yes my love 💕
+</button>
+
+        <button class="no-btn" id="noButton">
+            No 😢
+        </button>
+    </div>
 </div>
+
+<!-- Romantic music -->
+<audio id="bg-music" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Start music on first interaction if blocked
+window.addEventListener("click", function() {
+    document.getElementById("bg-music").play();
+}, { once: true });
+
+// Make the NO button run away
+const noBtn = document.getElementById("noButton");
+
+noBtn.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 150);
+    const y = Math.random() * (window.innerHeight - 100);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+</script>
 
 </body>
 </html>
