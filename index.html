@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Important Message</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: black url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3') no-repeat center center/cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: 'Arial Black', sans-serif;
+        color: white;
+    }
+
+    .container {
+        background: rgba(0,0,0,0.6);
+        padding: 40px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 3em;
+        margin: 0;
+    }
+
+    .gold {
+        color: gold;
+    }
+
+    .from {
+        margin-top: 20px;
+        font-size: 2em;
+        color: gold;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        color: red;
+        font-size: 24px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-10vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>YOU'RE THE <span class="gold">DROID</span><br>
+    I'VE BEEN LOOKING FOR!</h1>
+    <div class="from">FROM ANTHONY</div>
+</div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
