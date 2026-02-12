@@ -27,7 +27,6 @@ h1 {
     to { transform: scale(1.1); }
 }
 
-/* floating hearts */
 .heart {
     position: absolute;
     color: white;
@@ -45,7 +44,13 @@ h1 {
 
 <h1>YAYYYYY YOU SAID YESSSS 💕🥰</h1>
 
+<!-- Cute background music -->
+<audio id="bg-music" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+// Floating hearts
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -59,8 +64,12 @@ function createHeart() {
         heart.remove();
     }, 6000);
 }
-
 setInterval(createHeart, 300);
+
+// Force play in case autoplay is blocked
+window.addEventListener("click", function() {
+    document.getElementById("bg-music").play();
+});
 </script>
 
 </body>
